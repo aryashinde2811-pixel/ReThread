@@ -173,8 +173,7 @@ function initLoginPage() {
     btn.textContent = 'Signing In...';
 
     try {
-      const port = window.location.port === '3000' || window.location.port === '5000' ? ':5000' : '';
-      const baseUrl = window.location.protocol + '//' + window.location.hostname + port;
+      const baseUrl = 'https://rethread-arxd.onrender.com';
 
       const res = await fetch(`${baseUrl}/api/auth/login`, {
         method: 'POST',
@@ -222,9 +221,7 @@ function initRegisterPage() {
     btn.textContent = 'Registering...';
 
     try {
-      // Assuming server runs on the same origin (or port 5000 in dev)
-      const port = window.location.port === '3000' || window.location.port === '5000' ? ':5000' : '';
-      const baseUrl = window.location.protocol + '//' + window.location.hostname + port;
+      const baseUrl = 'https://rethread-arxd.onrender.com';
 
       const res = await fetch(`${baseUrl}/api/auth/register`, {
         method: 'POST',
