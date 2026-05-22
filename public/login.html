@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – ReThread</title>
+  <meta name="description" content="Sign in to ReThread to shop, sell, and manage your wallet."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="login">
+<div class="bg-grain"></div>
+
+<div class="min-h-screen flex items-center justify-center px-4">
+  <div class="w-full max-w-md">
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <a href="index.html" class="logo-text text-3xl inline-flex items-center gap-3 no-underline">
+        <svg class="w-9 h-9 text-green-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        ReThread
+      </a>
+      <p class="text-gray-400 mt-2 text-sm">Sign in to your account</p>
+    </div>
+
+    <!-- Login Form -->
+    <div class="card p-8">
+      <form id="loginForm" class="space-y-5">
+        <div>
+          <label class="form-label" for="loginUser">Username</label>
+          <input type="text" id="loginUser" class="form-input" placeholder="Enter username" required/>
+        </div>
+        <div>
+          <label class="form-label" for="loginPass">Password</label>
+          <input type="password" id="loginPass" class="form-input" placeholder="Enter password" required/>
+        </div>
+        <button type="submit" class="btn-gold w-full py-3 text-base">Sign In</button>
+      </form>
+    </div>
+
+    <p class="text-center text-gray-500 text-sm mt-6 mb-2">
+      Don't have an account? <a href="register.html" class="text-green-700 font-semibold hover:underline">Register here</a>
+    </p>
+    <p class="text-center text-gray-400 text-xs mt-2">
+      <a href="index.html" class="hover:text-green-700 transition">← Back to Home</a>
+    </p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout – ReThread</title>
+  <meta name="description" content="Review your cart and complete your purchase with wallet credit on ReThread."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="checkout">
+<div class="bg-grain"></div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+    <a href="index.html" class="logo-text flex items-center gap-2 no-underline">
+      <svg class="w-7 h-7 text-green-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      ReThread
+    </a>
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="sell.html" class="nav-link">Sell</a>
+      <a href="checkout.html" class="nav-link active">Cart</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="checkout.html" class="relative text-green-700 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-green-600 text-white text-xs font-bold rounded-full items-center justify-center hidden">0</span>
+      </a>
+      <div id="authArea" class="flex items-center gap-3"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ CHECKOUT ═══ -->
+<section class="max-w-5xl mx-auto px-6 py-12">
+  <h1 class="section-title text-2xl mb-10 fade-up">Your <span class="gold">Cart</span></h1>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <!-- Items -->
+    <div class="lg:col-span-2 card p-8 fade-up" id="checkoutItems"></div>
+
+    <!-- Order Summary -->
+    <div class="card p-8 h-fit fade-up" id="orderSummary" style="transition-delay:0.1s">
+      <h2 class="font-bold text-lg text-gray-800 mb-6">Order Summary</h2>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between text-gray-500">
+          <span>Subtotal</span>
+          <span id="subtotal" class="text-gray-700 font-medium">₹0</span>
+        </div>
+        <div class="flex justify-between text-gray-500">
+          <span>Shipping</span>
+          <span id="shipping" class="text-gray-700 font-medium">₹0</span>
+        </div>
+        <div class="flex justify-between text-emerald-600 hidden" id="creditRow">
+          <span>Wallet Credit</span>
+          <span id="creditApplied">-₹0</span>
+        </div>
+        <hr class="border-gray-100"/>
+        <div class="flex justify-between text-lg font-bold">
+          <span class="text-gray-800">Total Payable</span>
+          <span id="totalPayable" class="text-gray-900">₹0</span>
+        </div>
+      </div>
+
+      <!-- Wallet Toggle -->
+      <div class="mt-6 p-4 rounded-2xl bg-orange-50/60 border border-orange-100">
+        <label class="flex items-center justify-between cursor-pointer">
+          <div>
+            <span class="text-sm font-medium text-gray-700">Use Wallet Credit</span>
+            <p class="text-xs text-gray-400 mt-0.5">Balance: <span id="walletBalance" class="text-green-700 font-semibold">₹0</span></p>
+          </div>
+          <div class="relative">
+            <input type="checkbox" id="useCredit" class="sr-only peer"/>
+            <div class="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-green-500 transition-colors"></div>
+            <div class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5"></div>
+          </div>
+        </label>
+      </div>
+
+      <button onclick="placeOrder()" class="btn-gold w-full py-3 mt-6 text-base">Place Order</button>
+      <p class="text-center text-xs text-gray-400 mt-3">Free shipping on orders above ₹2,000</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer py-10">
+  <div class="max-w-7xl mx-auto px-6 text-center text-xs text-gray-400">
+    © 2026 ReThread. All rights reserved.
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

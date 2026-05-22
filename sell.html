@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Your Clothes – ReThread</title>
+  <meta name="description" content="Submit your pre-loved fashion for a trade-in review and earn wallet credit on ReThread."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="sell">
+<div class="bg-grain"></div>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+    <a href="index.html" class="logo-text flex items-center gap-2 no-underline">
+      <svg class="w-7 h-7 text-green-700" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      ReThread
+    </a>
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="sell.html" class="nav-link active">Sell</a>
+      <a href="checkout.html" class="nav-link">Cart</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="checkout.html" class="relative text-gray-400 hover:text-green-700 transition">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-green-600 text-white text-xs font-bold rounded-full items-center justify-center hidden">0</span>
+      </a>
+      <div id="authArea" class="flex items-center gap-3"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ SELL FORM ═══ -->
+<section class="max-w-3xl mx-auto px-6 py-16">
+  <div class="text-center mb-12 fade-up">
+    <span class="inline-block bg-orange-50 text-orange-500 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-orange-200">💰 Earn Credit</span>
+    <h1 class="section-title text-3xl">Sell Your <span class="gold">Fashion</span></h1>
+    <div class="section-divider mx-auto"></div>
+    <p class="text-gray-500 mt-3 max-w-lg mx-auto">Submit your clothing details below. Once approved, the trade-in value will be added to your wallet balance.</p>
+  </div>
+
+  <form id="sellForm" class="card p-10 space-y-7 fade-up">
+    <!-- Upload Zone -->
+    <div>
+      <label class="form-label">Product Image</label>
+      <div class="upload-zone" id="dropZone">
+        <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
+        <p class="zone-text text-gray-400 text-sm">Drop image here or click to browse</p>
+        <p class="text-xs text-gray-300 mt-1">JPG, PNG up to 5MB</p>
+      </div>
+      <input type="file" id="fileInput" accept="image/*" class="hidden"/>
+      <div id="imagePreview" class="mt-3"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <label class="form-label" for="itemName">Item Name</label>
+        <input type="text" id="itemName" class="form-input" placeholder="e.g. Navy Wool Blazer" required/>
+      </div>
+      <div>
+        <label class="form-label" for="itemCategory">Category</label>
+        <select id="itemCategory" class="form-input" required>
+          <option value="">Select category</option>
+          <option value="Shirts">Shirts</option>
+          <option value="Blazers">Blazers</option>
+          <option value="Trousers">Trousers</option>
+          <option value="Jackets">Jackets</option>
+          <option value="Ethnic">Ethnic Wear</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label class="form-label" for="itemCondition">Condition</label>
+      <div class="grid grid-cols-3 gap-3">
+        <label class="card p-4 text-center cursor-pointer hover:border-green-300 transition has-[:checked]:border-green-400 has-[:checked]:bg-green-50">
+          <input type="radio" name="condition" value="Like New" class="hidden" id="condNew"/>
+          <span class="text-sm font-medium text-gray-600">✨ Like New</span>
+        </label>
+        <label class="card p-4 text-center cursor-pointer hover:border-green-300 transition has-[:checked]:border-green-400 has-[:checked]:bg-green-50">
+          <input type="radio" name="condition" value="Good" class="hidden" checked/>
+          <span class="text-sm font-medium text-gray-600">👍 Good</span>
+        </label>
+        <label class="card p-4 text-center cursor-pointer hover:border-green-300 transition has-[:checked]:border-green-400 has-[:checked]:bg-green-50">
+          <input type="radio" name="condition" value="Fair" class="hidden"/>
+          <span class="text-sm font-medium text-gray-600">📦 Fair</span>
+        </label>
+      </div>
+      <input type="hidden" id="itemCondition" value="Good"/>
+    </div>
+
+    <div>
+      <label class="form-label" for="itemDesc">Description</label>
+      <textarea id="itemDesc" class="form-input" rows="3" placeholder="Describe brand, size, wear details..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-sell w-full py-3.5 text-base">Submit for Review</button>
+  </form>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer py-10">
+  <div class="max-w-7xl mx-auto px-6 text-center text-xs text-gray-400">
+    © 2026 ReThread. All rights reserved.
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Sync radio to hidden input
+  document.querySelectorAll('input[name="condition"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('itemCondition').value = r.value;
+    });
+  });
+</script>
+</body>
+</html>
